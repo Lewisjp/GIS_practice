@@ -1,0 +1,31 @@
+This is a code along based on Rails Conf 2012 Getting Down To Earth: Geospatial Analysis With Rails by Daniel Azuma
+https://www.youtube.com/watch?v=QI0e2jkUbkk#t=17
+
+#Agenda
+
+#Setting up a geospatial Rails App
+  gem 'libgeos' # geometric algorithms
+  gem 'libproj' # coordinate projections
+  gem 'PostGIS' # spatial plugin for PostgreSQL
+  gem 'RGeo' # Ruby libraries 
+
+  rails new myapp -d postgresql
+  # Add to your Gemfile
+  gem 'activerecord-postgis-adapter'
+  gem 'rgeo-shapefile' # reads geo data from shape files
+  gem 'squeel', github: 'kiela/squeel'# active record enhancement 
+  gem 'polyamorous', github: 'activerecord-hackery/polyamorous', branch: 'rails-4.1' # for rails 4
+  gem 'activeadmin', github: 'gregbell/active_admin' # resolve squeel issues with rails 4 
+
+  # Checkout their README in active record adaptor for info on database.yml
+
+  # application.rb
+  require 'squeel'
+  require 'active_record/connection_adapters/postgis_adapter/railtie'
+ 
+  rake db:create # i used rake:db migrate instead 
+
+#Project 1: Visualizing geo-activity
+  #Generate activity record model
+  rails generate model activity_record coords:point
+#Project 2: Timezone lookup for a location
