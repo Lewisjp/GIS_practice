@@ -1,7 +1,9 @@
+=USING Rails 4. 
 This is a code along based on Rails Conf 2012 Getting Down To Earth: Geospatial Analysis With Rails by Daniel Azuma
 https://www.youtube.com/watch?v=QI0e2jkUbkk#t=17
 
 #Agenda
+
 
 #Setting up a geospatial Rails App
   gem 'libgeos' # geometric algorithms
@@ -28,4 +30,51 @@ https://www.youtube.com/watch?v=QI0e2jkUbkk#t=17
 #Project 1: Visualizing geo-activity
   #Generate activity record model
   rails generate model activity_record coords:point
+  # migrate/xxxxx_create_activity_records.rb
+  class CreateActivityRecords < ActiveRecord::Migration
+    def change
+      create_table :activity_records do |t|
+        t.point :coords, :srid => 3785
+      end
+      change_table :check_ins do |t|
+        t.index :coords, :spatial => true
+      end
+    end
+  end
+  # model activity_record.rb
+  class ActivityRecord < ActiveRecord::Base
+    attr_accessible :coords
+
+    GEOFACTORY = RGEO::Geographic.simple_mercator_factory
+    set_rgeo_factory_for_column(:coords, GEOFACTORY.projection_factory)
+  end
+
+  rake db:migrate
+
+  !!!! Paused at 11:39  rake db:migrate fails 
+  !!!! we dont have long lats to import yet...
+  !!!! skipped script to load data at 12:08
+
+  # model activity_record.rb
+  # query for points in rectangle
+
+  def self.in_rect(w,s,e,n)
+    sw = GEOFACTORY.point(w,s).projection
+    ne = GEOFACTORY.point(e,n).projection 
+    box = RGeo::Cartesian::BoundingBox.create_from_points(sw,ne)
+    where(["coords && ?", box])
+  end
+
+  # How to implement a heatmap in JS (not implemented yet in this repo)
+  # Get data....
+  var map = myGetGoogleMap();
+  var latlngs = myGetLatLngArray();
+  # Create & Render overlay...
+  var overlay = new Thermo.GoogleMapsOverlay(map, {radius: 20, curve: 20});
+  overlay.establishBounds();
+  overlay.renderLatLngArray(latlngs);
+
+
 #Project 2: Timezone lookup for a location
+
+  Code along Paused at 19:00 
