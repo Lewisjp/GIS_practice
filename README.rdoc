@@ -75,3 +75,8 @@ https://www.youtube.com/watch?v=QI0e2jkUbkk#t=17
 =Project 2: Timezone lookup for a location
 
   Code along Paused at 19:00 
+
+=Resources from the talk
+http://daniel-azuma.com/articles/talks/railsconf-2012
+
+https://github.com/newhavenrb/conferences/wiki/Getting-Down-To-Earth:-Geospatial-Analysis-With-Rails
