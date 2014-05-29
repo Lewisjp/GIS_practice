@@ -37,6 +37,7 @@ gem 'spring',        group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+gem 'rgeo'
 gem 'activerecord-postgis-adapter'
 gem 'rgeo-shapefile'
 gem 'squeel', github: 'kiela/squeel'

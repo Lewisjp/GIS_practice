@@ -187,6 +187,7 @@ DEPENDENCIES
   jquery-rails
   pg
   rails (= 4.1.0)
+  rgeo
   rgeo-shapefile
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)

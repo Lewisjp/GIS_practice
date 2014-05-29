@@ -3,13 +3,13 @@ This is a code along based on Rails Conf 2012 Getting Down To Earth: Geospatial 
 https://www.youtube.com/watch?v=QI0e2jkUbkk#t=17
 
 =Setting up a geospatial Rails App
-  gem 'libgeos' # geometric algorithms
-  gem 'libproj' # coordinate projections
-  gem 'PostGIS' # spatial plugin for PostgreSQL
-  gem 'RGeo' # Ruby libraries 
+  'libgeos' # geometric algorithms
+  'libproj' # coordinate projections
+  'PostGIS' # spatial plugin for PostgreSQL
 
   rails new myapp -d postgresql
   # Add to your Gemfile
+  gem 'rgeo' # Ruby libraries 
   gem 'activerecord-postgis-adapter'
   gem 'rgeo-shapefile' # reads geo data from shape files
   gem 'squeel', github: 'kiela/squeel'# active record enhancement 
