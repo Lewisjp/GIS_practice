@@ -2,10 +2,7 @@
 This is a code along based on Rails Conf 2012 Getting Down To Earth: Geospatial Analysis With Rails by Daniel Azuma
 https://www.youtube.com/watch?v=QI0e2jkUbkk#t=17
 
-#Agenda
-
-
-#Setting up a geospatial Rails App
+=Setting up a geospatial Rails App
   gem 'libgeos' # geometric algorithms
   gem 'libproj' # coordinate projections
   gem 'PostGIS' # spatial plugin for PostgreSQL
@@ -75,6 +72,6 @@ https://www.youtube.com/watch?v=QI0e2jkUbkk#t=17
   overlay.renderLatLngArray(latlngs);
 
 
-#Project 2: Timezone lookup for a location
+=Project 2: Timezone lookup for a location
 
   Code along Paused at 19:00 
