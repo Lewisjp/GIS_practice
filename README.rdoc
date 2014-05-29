@@ -24,7 +24,7 @@ https://www.youtube.com/watch?v=QI0e2jkUbkk#t=17
  
   rake db:create # i used rake:db migrate instead 
 
-#Project 1: Visualizing geo-activity
+=Project 1: Visualizing geo-activity
   #Generate activity record model
   rails generate model activity_record coords:point
   # migrate/xxxxx_create_activity_records.rb
